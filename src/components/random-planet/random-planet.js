@@ -5,24 +5,19 @@ import SwapiService from "../../services/swapi-service";
 export default class RandomPlanet extends Component {
   swapiService = new SwapiService();
   state = {
-    id: 1,
-    name: "Loading",
-    population: "Loading",
-    rotationPeriod: "Loading",
-    diameter: "Loading",
+    planet: {
+      image:
+        "https://media.tenor.com/1s1_eaP6BvgAAAAi/rainbow-spinner-loading.gif",
+    },
+  };
+
+  onPlanetLoaded = (planet) => {
+    this.setState({ planet });
   };
 
   updatePlanet() {
-    const id = Math.floor(Math.random() * 19) + 2;
-    this.swapiService.getPlanet(id).then((planet) => {
-      this.setState({
-        id,
-        name: planet.name,
-        population: planet.population,
-        rotationPeriod: planet.rotation_period,
-        diameter: planet.diameter,
-      });
-    });
+    const id = 3;
+    this.swapiService.getPlanet(id).then(this.onPlanetLoaded);
   }
 
   constructor(props) {
@@ -31,15 +26,12 @@ export default class RandomPlanet extends Component {
   }
 
   render() {
-    const { name, population, rotationPeriod, diameter, id } = this.state;
-
+    const {
+      planet: { name, population, rotationPeriod, diameter, id, image },
+    } = this.state;
     return (
       <div className="random-planet jumbotron rounded">
-        <img
-          className="planet-image"
-          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
-          alt="planet image"
-        />
+        <img className="planet-image" src={image} alt="planet image" />
         <div>
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
