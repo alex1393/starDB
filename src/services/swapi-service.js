@@ -49,9 +49,6 @@ export default class SwapiService {
       population: planet.population,
       rotationPeriod: planet.rotation_period,
       diameter: planet.diameter,
-      image: `https://starwars-visualguide.com/assets/img/planets/${this._extractId(
-        planet.url
-      )}.jpg`,
     };
   }
 
