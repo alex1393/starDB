@@ -13,12 +13,19 @@ export default class ItemList extends Component {
       this.setState({ peopleList });
     });
   }
+  onItemSelected = this.props.onPersonSelected;
 
   renderItems = (arr) => {
-    return arr.map((person) => {
+    return arr.map(({ id, name }) => {
       return (
-        <li key={person.id} className="list-group-item">
-          {person.name}
+        <li
+          key={id}
+          className="list-group-item"
+          onClick={() => {
+            this.onItemSelected(id);
+          }}
+        >
+          {name}
         </li>
       );
     });
@@ -32,12 +39,7 @@ export default class ItemList extends Component {
     }
 
     return (
-      <ul className="item-list list-group">
-        {this.renderItems(peopleList)}
-        {/*<li className="list-group-item">Luke Skywalker</li>*/}
-        {/*<li className="list-group-item">Darth Vader</li>*/}
-        {/*<li className="list-group-item">R2-D2</li>*/}
-      </ul>
+      <ul className="item-list list-group">{this.renderItems(peopleList)}</ul>
     );
   }
 }
