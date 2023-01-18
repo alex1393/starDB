@@ -13,8 +13,7 @@ export default class ItemList extends Component {
       this.setState({ peopleList });
     });
   }
-  onItemSelected = this.props.onPersonSelected;
-
+  onItemSelected = this.props.onItemSelected;
   renderItems = (arr) => {
     return arr.map(({ id, name }) => {
       return (
