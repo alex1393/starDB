@@ -34,6 +34,10 @@ export default class RandomPlanet extends Component {
     this.interval = setInterval(this.updatePlanet, 2500);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   render() {
     const { planet, loading, error } = this.state;
     const errorMessage = error ? <ErrorIndicator /> : null;
