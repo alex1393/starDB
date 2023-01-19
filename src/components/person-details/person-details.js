@@ -21,6 +21,7 @@ export default class PersonDetails extends Component {
       });
       this.updatePerson();
     }
+    this.fds.d = 0;
   }
 
   updatePerson(person) {
