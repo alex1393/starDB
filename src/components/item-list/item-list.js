@@ -3,42 +3,46 @@ import "./item-list.css";
 import SwapiService from "../../services/swapi-service";
 import Spinner from "../spinner/spinner";
 export default class ItemList extends Component {
-  swapiService = new SwapiService();
   state = {
-    peopleList: null,
+    itemList: null,
   };
 
   componentDidMount() {
-    this.swapiService.getAllPeople().then((peopleList) => {
-      this.setState({ peopleList });
+    const { getData } = this.props;
+    getData().then((itemList) => {
+      this.setState({ itemList });
     });
   }
   onItemSelected = this.props.onItemSelected;
   renderItems = (arr) => {
+    let count = 0;
     return arr.map(({ id, name }) => {
-      return (
-        <li
-          key={id}
-          className="list-group-item"
-          onClick={() => {
-            this.onItemSelected(id);
-          }}
-        >
-          {name}
-        </li>
-      );
+      if (count != 5) {
+        count++;
+        return (
+          <li
+            key={id}
+            className="list-group-item"
+            onClick={() => {
+              this.onItemSelected(id);
+            }}
+          >
+            {name}
+          </li>
+        );
+      }
     });
   };
 
   render() {
-    const { peopleList } = this.state;
+    const { itemList } = this.state;
 
-    if (!peopleList) {
+    if (!itemList) {
       return <Spinner />;
     }
 
     return (
-      <ul className="item-list list-group">{this.renderItems(peopleList)}</ul>
+      <ul className="item-list list-group">{this.renderItems(itemList)}</ul>
     );
   }
 }

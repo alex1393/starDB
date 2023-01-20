@@ -5,7 +5,9 @@ import PersonDetails from "../person-details/person-details";
 import Header from "../header/header";
 import "./app.css";
 import PeoplePage from "../people-page/people-page";
+import SwapiService from "../../services/swapi-service";
 export default class App extends Component {
+  swapiService = new SwapiService();
   state = {
     showRandomPlanet: true,
   };
@@ -23,7 +25,7 @@ export default class App extends Component {
     return (
       <div className="stardb-app">
         <Header />
-        {planet}
+        {/*{planet}*/}
 
         <button
           className="toggle-planet btn btn-warning btn-lg"
@@ -33,8 +35,20 @@ export default class App extends Component {
         </button>
 
         <PeoplePage />
-        <PeoplePage />
-        <PeoplePage />
+        <div className="row mb2">
+          <div className="col-md-6">
+            <ItemList
+              getData={this.swapiService.getAllPlanets}
+              onItemSelected={this.onPersonSelected}
+            />
+          </div>
+          <div className="col-md-6">
+            <PersonDetails
+              personId={this.state.selectedPerson}
+              loadingPerson={this.state.loadingPerson}
+            />
+          </div>
+        </div>
       </div>
     );
   }
