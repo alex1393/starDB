@@ -25,7 +25,7 @@ export default class App extends Component {
     return (
       <div className="stardb-app">
         <Header />
-        {/*{planet}*/}
+        {planet}
 
         <button
           className="toggle-planet btn btn-warning btn-lg"
@@ -40,6 +40,22 @@ export default class App extends Component {
             <ItemList
               getData={this.swapiService.getAllPlanets}
               onItemSelected={this.onPersonSelected}
+              dataItems={["name", "population"]}
+            />
+          </div>
+          <div className="col-md-6">
+            <PersonDetails
+              personId={this.state.selectedPerson}
+              loadingPerson={this.state.loadingPerson}
+            />
+          </div>
+        </div>
+        <div className="row mb2">
+          <div className="col-md-6">
+            <ItemList
+              getData={this.swapiService.getAllStarships}
+              onItemSelected={this.onPersonSelected}
+              dataItems={["name"]}
             />
           </div>
           <div className="col-md-6">

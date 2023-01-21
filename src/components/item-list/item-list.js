@@ -14,20 +14,25 @@ export default class ItemList extends Component {
     });
   }
   onItemSelected = this.props.onItemSelected;
+  dataItems = this.props.dataItems;
+
   renderItems = (arr) => {
     let count = 0;
-    return arr.map(({ id, name }) => {
+    return arr.map((data) => {
+      let dataAll = this.dataItems.map((el) => {
+        return el + ": " + data[el] + " ";
+      });
       if (count != 5) {
         count++;
         return (
           <li
-            key={id}
+            key={data.id}
             className="list-group-item"
             onClick={() => {
-              this.onItemSelected(id);
+              this.onItemSelected(data.id);
             }}
           >
-            {name}
+            {dataAll}
           </li>
         );
       }
