@@ -18,7 +18,7 @@ export default class ItemList extends Component {
     let count = 0;
     return arr.map((item) => {
       const { id } = item;
-      let label = this.props.renderItem(item);
+      let label = this.props.children(item);
       if (count != 5) {
         count++;
         return (
