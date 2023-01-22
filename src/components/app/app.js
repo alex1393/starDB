@@ -35,36 +35,36 @@ export default class App extends Component {
         </button>
 
         <PeoplePage />
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList
-              getData={this.swapiService.getAllPlanets}
-              onItemSelected={this.onPersonSelected}
-              dataItems={["name", "population"]}
-            />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails
-              personId={this.state.selectedPerson}
-              loadingPerson={this.state.loadingPerson}
-            />
-          </div>
-        </div>
-        <div className="row mb2">
-          <div className="col-md-6">
-            <ItemList
-              getData={this.swapiService.getAllStarships}
-              onItemSelected={this.onPersonSelected}
-              dataItems={["name"]}
-            />
-          </div>
-          <div className="col-md-6">
-            <PersonDetails
-              personId={this.state.selectedPerson}
-              loadingPerson={this.state.loadingPerson}
-            />
-          </div>
-        </div>
+        {/*<div className="row mb2">*/}
+        {/*  <div className="col-md-6">*/}
+        {/*    <ItemList*/}
+        {/*      getData={this.swapiService.getAllPlanets}*/}
+        {/*      onItemSelected={this.onPersonSelected}*/}
+        {/*      renderItem={(item) => item.name}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*  <div className="col-md-6">*/}
+        {/*    <PersonDetails*/}
+        {/*      personId={this.state.selectedPerson}*/}
+        {/*      loadingPerson={this.state.loadingPerson}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*</div>*/}
+        {/*<div className="row mb2">*/}
+        {/*  <div className="col-md-6">*/}
+        {/*    <ItemList*/}
+        {/*      getData={this.swapiService.getAllStarships}*/}
+        {/*      onItemSelected={this.onPersonSelected}*/}
+        {/*      renderItem={({ name }) => name}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*  <div className="col-md-6">*/}
+        {/*    <PersonDetails*/}
+        {/*      personId={this.state.selectedPerson}*/}
+        {/*      loadingPerson={this.state.loadingPerson}*/}
+        {/*    />*/}
+        {/*  </div>*/}
+        {/*</div>*/}
       </div>
     );
   }
