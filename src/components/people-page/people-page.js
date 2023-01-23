@@ -1,18 +1,11 @@
 import React, { Component } from "react";
 import "./people-page.css";
 import ItemList from "../item-list/item-list";
-import PersonDetails from "../person-details/person-details";
+import ItemDetails from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
-import ErrorBoundry from "../ErrorBoundry/ErrorBoundry";
+import ErrorBoundry from "../error-boundry/ErrorBoundry";
+import Row from "../row/row";
 
-const Row = ({ left, right }) => {
-  return (
-    <div className="row mb2">
-      <div className="col-md-6">{left}</div>
-      <div className="col-md-6">{right}</div>
-    </div>
-  );
-};
 export default class PeoplePage extends Component {
   swapiService = new SwapiService();
   state = {
@@ -34,9 +27,9 @@ export default class PeoplePage extends Component {
     );
     const personDetails = (
       <ErrorBoundry>
-        <PersonDetails
-          personId={this.state.selectedPerson}
-          loadingPerson={this.state.loadingPerson}
+        <ItemDetails
+          itemId={this.state.selectedPerson}
+          loadingItem={this.state.loadingPerson}
         />
       </ErrorBoundry>
     );
