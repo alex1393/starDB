@@ -3,7 +3,6 @@ export default class SwapiService {
   _apiBase = "https://swapi.dev/api";
   _imageBase = "https://starwars-visualguide.com/assets/img";
   getResource = async (url) => {
-    console.log(url);
     const res = await fetch(`${this._apiBase}${url}`);
     if (!res.ok) {
       throw new Error(`Could not fetch ${url}, received ${res.status}`);
@@ -75,7 +74,7 @@ export default class SwapiService {
       name: starship.name,
       model: starship.model,
       manufacturer: starship.manufacturer,
-      constInCredits: starship.constInCredits,
+      constInCredits: starship.cost_in_credits,
       length: starship.length,
       crew: starship.crew,
       passengers: starship.passengers,
@@ -89,7 +88,7 @@ export default class SwapiService {
       name: person.name,
       gender: person.gender,
       birthYear: person.birth_year,
-      eyeColor: person.eyeColor,
+      eyeColor: person.eye_color,
     };
   };
 }
