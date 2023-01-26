@@ -69,7 +69,6 @@ export default class ItemDetails extends Component {
         <div className="card-body">
           <h4>{name}</h4>
           <ul className="list-group list-group-flush">
-            {console.log(item)}
             {React.Children.map(this.props.children, (child) => {
               return React.cloneElement(child, { item });
             })}
