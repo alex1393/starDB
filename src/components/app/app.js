@@ -31,7 +31,7 @@ export default class App extends Component {
     );
     const itemListStarShips = (
       <ItemList getData={this.swapiService.getAllStarships}>
-        {(i) => `${i.name} (${i.gender}, ${i.birthYear})`}
+        {(i) => `${i.name} (${i.model}, ${i.length})`}
       </ItemList>
     );
 
