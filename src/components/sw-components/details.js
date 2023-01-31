@@ -1,5 +1,4 @@
 import React from "react";
-import ItemDetails, { Record } from "../item-details/item-details";
 import SwapiService from "../../services/swapi-service";
 
 const swapiService = new SwapiService();

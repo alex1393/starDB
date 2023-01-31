@@ -9,6 +9,7 @@ import {
   PlanetList,
 } from "../sw-components/item-lists";
 import ErrorBoundry from "../error-boundry/ErrorBoundry";
+import Row from "../row/row";
 export default class App extends Component {
   swapiService = new SwapiService();
   state = {
@@ -28,9 +29,20 @@ export default class App extends Component {
       <ErrorBoundry>
         <div className="stardb-app">
           <Header />
-          <PersonList>{({ name }) => <span>{name}</span>}</PersonList>
-          <StarshipList>{({ name }) => <span>{name}</span>}</StarshipList>
-          <PlanetList>{({ name }) => <span>{name}</span>}</PlanetList>
+          <Row
+            left={<PersonList>{({ name }) => <span>{name}</span>}</PersonList>}
+            right={1}
+          />
+          <Row
+            left={
+              <StarshipList>{({ name }) => <span>{name}</span>}</StarshipList>
+            }
+            right={2}
+          />
+          <Row
+            left={<PlanetList>{({ name }) => <span>{name}</span>}</PlanetList>}
+            right={3}
+          />
         </div>
       </ErrorBoundry>
     );
