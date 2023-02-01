@@ -10,6 +10,11 @@ import {
 } from "../sw-components/item-lists";
 import ErrorBoundry from "../error-boundry/ErrorBoundry";
 import Row from "../row/row";
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+} from "../sw-components/details";
 export default class App extends Component {
   swapiService = new SwapiService();
   state = {
@@ -29,20 +34,9 @@ export default class App extends Component {
       <ErrorBoundry>
         <div className="stardb-app">
           <Header />
-          <Row
-            left={<PersonList>{({ name }) => <span>{name}</span>}</PersonList>}
-            right={1}
-          />
-          <Row
-            left={
-              <StarshipList>{({ name }) => <span>{name}</span>}</StarshipList>
-            }
-            right={2}
-          />
-          <Row
-            left={<PlanetList>{({ name }) => <span>{name}</span>}</PlanetList>}
-            right={3}
-          />
+          <Row left={<PersonList />} right={<PersonDetails itemId={11} />} />
+          <Row left={<StarshipList />} right={<StarshipDetails itemId={9} />} />
+          <Row left={<PlanetList />} right={<PlanetDetails itemId={5} />} />
         </div>
       </ErrorBoundry>
     );

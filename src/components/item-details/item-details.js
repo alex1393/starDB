@@ -40,6 +40,7 @@ export default class ItemDetails extends Component {
     if (!itemId) {
       return;
     }
+    console.log(item);
     getData(itemId).then((item) => {
       this.setState({
         item,
