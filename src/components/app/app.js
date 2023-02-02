@@ -11,11 +11,9 @@ import {
 } from "../sw-components/item-lists";
 import ErrorBoundry from "../error-boundry/ErrorBoundry";
 import Row from "../row/row";
-import {
-  PersonDetails,
-  PlanetDetails,
-  StarshipDetails,
-} from "../sw-components/details";
+import PersonDetails from "../sw-components/person-details";
+import PlanetDetails from "../sw-components/planet-details";
+import StarshipDetails from "../sw-components/starship-details";
 export default class App extends Component {
   swapiService = new SwapiService();
   state = {
