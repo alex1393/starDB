@@ -39,7 +39,7 @@ export default class App extends Component {
               left={<StarshipList />}
               right={<StarshipDetails itemId={9} />}
             />
-            <Row left={<PlanetList />} right={<PlanetDetails itemId={5} />} />
+            <Row left={<PlanetList />} right={<PlanetDetails itemId={4} />} />
           </div>
         </SwapiServiceProvider>
       </ErrorBoundry>
