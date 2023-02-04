@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import RandomPlanet from "../random-planet/random-planet";
 import Header from "../header/header";
 import "./app.css";
 import SwapiService from "../../services/swapi-service";
@@ -16,19 +15,8 @@ import PlanetDetails from "../sw-components/planet-details";
 import StarshipDetails from "../sw-components/starship-details";
 export default class App extends Component {
   swapiService = new SwapiService();
-  state = {
-    showRandomPlanet: true,
-  };
-  toggleRandomPlanet = () => {
-    this.setState((state) => {
-      return {
-        showRandomPlanet: !state.showRandomPlanet,
-      };
-    });
-  };
 
   render() {
-    const planet = this.state.showRandomPlanet ? <RandomPlanet /> : null;
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.swapiService}>
