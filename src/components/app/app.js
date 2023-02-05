@@ -13,15 +13,27 @@ import Row from "../row/row";
 import PersonDetails from "../sw-components/person-details";
 import PlanetDetails from "../sw-components/planet-details";
 import StarshipDetails from "../sw-components/starship-details";
+import DummySwapiService from "../../services/dummy-swapi-service";
 export default class App extends Component {
-  swapiService = new SwapiService();
+  state = {
+    shadowRandowPlanet: true,
+    swapiService: new DummySwapiService(),
+  };
+
+  onServiceChange = () => {
+    this.setState(({ swapiService }) => {
+      const Service =
+        swapiService instanceof SwapiService ? DummySwapiService : SwapiService;
+      return { swapiService: new Service() };
+    });
+  };
 
   render() {
     return (
       <ErrorBoundry>
-        <SwapiServiceProvider value={this.swapiService}>
+        <SwapiServiceProvider value={this.state.swapiService}>
           <div className="stardb-app">
-            <Header />
+            <Header onServiceChange={this.onServiceChange} />
             <Row left={<PersonList />} right={<PersonDetails itemId={11} />} />
             <Row
               left={<StarshipList />}

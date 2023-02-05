@@ -25,3 +25,8 @@
 .header h3 a:hover {
     color: #00bc8c;
 }
+
+.header button{
+    height: 2rem;
+    margin-top: 4px;
+}

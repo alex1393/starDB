@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./item-details.css";
-import SwapiService from "../../services/swapi-service";
 import Spinner from "../spinner/spinner";
 
 const Record = ({ item, field, label }) => {
@@ -14,8 +13,6 @@ const Record = ({ item, field, label }) => {
 
 export { Record };
 export default class ItemDetails extends Component {
-  swapiService = new SwapiService();
-
   state = {
     item: null,
     image: null,
@@ -27,7 +24,11 @@ export default class ItemDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.itemId !== prevProps.itemId) {
+    if (
+      this.props.itemId !== prevProps.itemId ||
+      this.props.getData !== prevProps.getData ||
+      this.props.getImageUrl !== prevProps.getImageUrl
+    ) {
       this.setState({
         loading: true,
       });
@@ -35,7 +36,7 @@ export default class ItemDetails extends Component {
     }
   }
 
-  updateItem(item) {
+  updateItem() {
     const { itemId, getData, getImageUrl } = this.props;
     if (!itemId) {
       return;
@@ -60,11 +61,11 @@ export default class ItemDetails extends Component {
 
     const { item, image } = this.state;
 
-    const { id, name } = item;
+    const { name } = item;
 
     return (
       <div className="item-details card">
-        <img className="item-image" src={image} />
+        <img className="item-image" src={image} alt="star object" />
 
         <div className="card-body">
           <h4>{name}</h4>

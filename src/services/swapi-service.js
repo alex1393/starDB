@@ -1,4 +1,3 @@
-// https://swapi.dev/api/people/123123
 export default class SwapiService {
   _apiBase = "https://swapi.dev/api";
   _imageBase = "https://starwars-visualguide.com/assets/img";
