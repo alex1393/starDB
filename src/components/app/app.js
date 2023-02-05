@@ -20,7 +20,6 @@ export default class App extends Component {
     shadowRandowPlanet: true,
     swapiService: new SwapiService(),
   };
-
   onServiceChange = () => {
     this.setState(({ swapiService }) => {
       const Service =
