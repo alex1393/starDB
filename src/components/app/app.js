@@ -14,10 +14,11 @@ import PersonDetails from "../sw-components/person-details";
 import PlanetDetails from "../sw-components/planet-details";
 import StarshipDetails from "../sw-components/starship-details";
 import DummySwapiService from "../../services/dummy-swapi-service";
+import RandomPlanet from "../random-planet/random-planet";
 export default class App extends Component {
   state = {
     shadowRandowPlanet: true,
-    swapiService: new DummySwapiService(),
+    swapiService: new SwapiService(),
   };
 
   onServiceChange = () => {
@@ -29,11 +30,14 @@ export default class App extends Component {
   };
 
   render() {
+    const planet = this.state.shadowRandowPlanet ? <RandomPlanet /> : null;
+
     return (
       <ErrorBoundry>
         <SwapiServiceProvider value={this.state.swapiService}>
           <div className="stardb-app">
             <Header onServiceChange={this.onServiceChange} />
+            {planet}
             <Row left={<PersonList />} right={<PersonDetails itemId={11} />} />
             <Row
               left={<StarshipList />}
