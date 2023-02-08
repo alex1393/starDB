@@ -6,11 +6,6 @@ import compose from "../hoc-helpers/compose";
 import withChildFunction from "../hoc-helpers/with-child-function";
 
 const renderName = ({ name }) => <span>{name}</span>;
-// const renderModelAndName = ({ name, model }) => (
-//   <span>
-//     {name} ({model})
-//   </span>
-// );
 
 const mapPersonMethodsToProps = (swapiService) => {
   return {
