@@ -6,7 +6,7 @@ import ErrorIndicator from "../error-indicator/error-indicator";
 
 export default class RandomPlanet extends Component {
   static defaultProps = {
-    updateInterval: 10000,
+    updateInterval: 5000,
   };
 
   swapiService = new SwapiService();
@@ -64,13 +64,23 @@ export default class RandomPlanet extends Component {
 
 const PlanetView = ({ planet }) => {
   const { name, population, rotationPeriod, diameter, id } = planet;
+  const imageUrl = `https://starwars-visualguide.com/assets/img/planets/${id}.jpg`;
+
+  const checkPicture = (e) => {
+    e.target.onerror = null;
+    e.target.src =
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png";
+  };
 
   return (
     <React.Fragment>
       <img
         alt="planet"
         className="planet-image"
-        src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+        src={imageUrl}
+        onError={(e) => {
+          checkPicture(e);
+        }}
       />
       <div>
         <h4>{name}</h4>
