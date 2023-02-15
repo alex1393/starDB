@@ -11,6 +11,8 @@ import PlanetPage from "../pages/planets-page";
 import StarshipPage from "../pages/starships-page";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import StarshipDetails from "../sw-components/starship-details";
+import PlanetDetails from "../sw-components/planet-details";
+import PersonDetails from "../sw-components/person-details";
 export default class App extends Component {
   state = {
     swapiService: new SwapiService(),
@@ -34,7 +36,9 @@ export default class App extends Component {
               <Routes>
                 <Route path={"/"} element={<h2>Welcome go StarDB</h2>} />
                 <Route path={"/people"} component={<PeoplePage />} />
+                <Route path={"/people/:id"} element={<PersonDetails />} />
                 <Route path={"/planets"} element={<PlanetPage />} />
+                <Route path={"/planets/:id"} element={<PlanetDetails />} />
                 <Route path={"/starships"} exact element={<StarshipPage />} />
                 <Route path={"/starships/:id"} element={<StarshipDetails />} />
               </Routes>
