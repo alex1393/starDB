@@ -5,13 +5,7 @@ import { useNavigate } from "react-router-dom";
 const PeoplePage = () => {
   const navigate = useNavigate();
 
-  return (
-    <PersonList
-      onItemSelected={(itemId) => {
-        navigate(`${itemId}`);
-      }}
-    />
-  );
+  return <PersonList onItemSelected={(itemId) => navigate(itemId)} />;
 };
 
 export default PeoplePage;

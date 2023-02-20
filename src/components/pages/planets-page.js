@@ -4,13 +4,7 @@ import { useNavigate } from "react-router-dom";
 const PlanetPage = () => {
   const navigate = useNavigate();
 
-  return (
-    <PlanetList
-      onItemSelected={(itemId) => {
-        navigate(`${itemId}`);
-      }}
-    />
-  );
+  return <PlanetList onItemSelected={(itemId) => navigate(itemId)} />;
 };
 
 export default PlanetPage;

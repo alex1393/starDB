@@ -4,13 +4,7 @@ import { useNavigate } from "react-router-dom";
 const StarshipPage = () => {
   const navigate = useNavigate();
 
-  return (
-    <StarshipList
-      onItemSelected={(itemId) => {
-        navigate(`${itemId}`);
-      }}
-    />
-  );
+  return <StarshipList onItemSelected={(itemId) => navigate(itemId)} />;
 };
 
 export default StarshipPage;
