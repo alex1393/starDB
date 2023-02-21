@@ -1,10 +1,27 @@
-import React from "react";
+import React, { Component } from "react";
 import { PlanetList } from "../sw-components/item-lists";
+import PlanetDetails from "../sw-components/planet-details";
 import { useNavigate } from "react-router-dom";
-const PlanetPage = () => {
-  const navigate = useNavigate();
 
-  return <PlanetList onItemSelected={(itemId) => navigate(itemId)} />;
-};
+import Row from "../row/row";
+export default class PlanetPage extends Component {
+  state = {
+    selectedItem: null,
+  };
 
-export default PlanetPage;
+  onItemSelected = (selectedItem) => {
+    this.setState({ selectedItem });
+  };
+
+  render() {
+    const navigate = useNavigate();
+
+    const { selectedItem } = this.state;
+    return (
+      <Row
+        left={<PlanetList onItemSelected={this.onItemSelected} />}
+        right={<PlanetDetails itemId={(itemId) => navigate(itemId)} />}
+      />
+    );
+  }
+}
