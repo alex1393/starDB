@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 
 const PersonDetails = (props) => {
   const { id } = useParams();
-  console.log(id);
   return (
     <ItemDetails {...props} itemId={id}>
       <Record field={"gender"} label={"Gender"} />

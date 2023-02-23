@@ -11,7 +11,7 @@ import PlanetPage from "../pages/planets-page";
 import StarshipPage from "../pages/starships-page";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import StarshipDetails from "../sw-components/starship-details";
-import PlanetDetails from "../sw-components/planet-details";
+// import PlanetDetails from "../sw-components/planet-details";
 import PersonDetails from "../sw-components/person-details";
 export default class App extends Component {
   state = {
