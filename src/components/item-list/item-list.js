@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 const ItemList = (props) => {
   const { data, onItemSelected, children: renderLabel } = props;
 
-  const items = data.map((item) => {
+  const items = data.slice(0, 5).map((item) => {
     const { id } = item;
     const label = renderLabel(item);
     return (
