@@ -9,7 +9,7 @@ import RandomPlanet from "../random-planet/random-planet";
 import PeoplePage from "../pages/people-page";
 import PlanetPage from "../pages/planets-page";
 import StarshipPage from "../pages/starships-page";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import PersonDetails from "../sw-components/person-details";
 import LoginPage from "../pages/login-page";
 import SecretPage from "../pages/secret-page";
@@ -44,8 +44,8 @@ export default class App extends Component {
               <RandomPlanet />
               <Routes>
                 <Route path={"/"} element={<h2>Welcome go StarDB</h2>} />
-                <Route path={"/people"} element={<PeoplePage />} />
                 <Route path={"/people/:id"} element={<PersonDetails />} />
+                <Route path={"/people"} element={<PeoplePage />} />
                 <Route path={"/planets"} element={<PlanetPage />} />
                 <Route path={"/planets/:id"} element={<PlanetPage />} />
                 <Route path={"/starships"} element={<StarshipPage />} />
@@ -60,6 +60,8 @@ export default class App extends Component {
                   path={"/secretPage"}
                   element={<SecretPage isLoggedIn={isLoggedIn} />}
                 />
+                {/* <Route path="*" element={<Navigate replace to="/" />} /> */}
+                <Route path="*" element={<h2>Page not found</h2>} />
               </Routes>
             </div>
           </BrowserRouter>
